@@ -1,32 +1,37 @@
+
+
+// validação
+
 // esse arquivo é referente para todas as minhas funções referente a user
 
  import { Request,Response } from "express" 
+import { UserService } from "../services/UserServices"
 
- // vamos simular um BD objeto 
-const db = [
-    {
-      name:"joana",
-      email:"joana@diobank.com",
-      idade:31
-    }
-  ]
+ 
   
 // classe 
 export class UserController {
-
-
-
-    // método 
+// método 
     createUser = (req: Request, res: Response) => {
 
-        // body corpo da requisição
-        const user = req.body
-        // add um novo usuario
-        db.push(user) 
-        // mostrando no cs
-        console.log(db)
-        // retorno da msg 
-        return res.status(201).json([{ message: "usuario criado" }])
+        const userservices = new UserService() // intanciei new UserService 
+        const user = req.body // no thunder client nós testamos no body (json) todo nosso objeto criado 
+
+        // validação uso exclamação para dizer se for nulo ou indefinido 
+        if(!user.nome){
+          return res.status(400).json({message:'bad request : name inválid'})
+        } 
+          userservices.createUser(user.nome,user.email,user.idade) // parametros 
+          return res.status(201).json({ message: "usuario criado" })
+    } 
+    
+    // método que pega todos os usuarios 
+    getAllUsers = (req:Request,res:Response) => {
+      const userservices = new UserService
+
+      const users = userservices.getAllUsers()
+      return res.status(200).json(users)
+
     }
 
 }

@@ -3,7 +3,7 @@ import { UserController } from './controllers/UserController';
 
 
 // instanciar o meu userController objeto 
-const userController = new UserController()
+const usercontroller = new UserController()
 
 
 
@@ -26,7 +26,11 @@ server.get('/',(req:Request,res:Response)=>{
 } )
 
 // método de post 
-server.post('/user',userController.createUser) 
+server.post('/user',usercontroller.createUser) 
+
+// pegando com get 
+server.get('/user',usercontroller.getAllUsers)
 
 // utilizar a função do express para a porta que vamos utilizar ela recebe dois parametros(porta,função retorna apenas a msg)
 server.listen(5000,()=>console.log('online'))
+
