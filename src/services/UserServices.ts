@@ -22,6 +22,7 @@ export class UserService {
             email,
             idade
         }
+        // adicionando no banco com push 
         db.push(user)
         console.log('DB atualizado ', db)
     }
@@ -29,5 +30,10 @@ export class UserService {
     // retorno do meu db 
     getAllUsers = () =>{
     return db
+    }
+
+    DeletarNome =() =>{
+      db.slice(1)
+      return db
     }
 }

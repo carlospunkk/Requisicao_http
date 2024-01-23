@@ -1,9 +1,9 @@
 import express , {Request,Response}from 'express';
-import { UserController } from './controllers/UserController';
+import { router } from './routes';
 
 
-// instanciar o meu userController objeto 
-const usercontroller = new UserController()
+
+
 
 
 
@@ -14,6 +14,8 @@ const server = express();
 
 // utilizar o json no express 
 server.use(express.json())
+// uilizar a rota 
+server.use(router)
 
 
 
@@ -25,12 +27,8 @@ server.get('/',(req:Request,res:Response)=>{
     return res.status(200).json({message:'Diobank Api'})
 } )
 
-// método de post 
-server.post('/user',usercontroller.createUser) 
 
-// pegando com get 
-server.get('/user',usercontroller.getAllUsers)
 
 // utilizar a função do express para a porta que vamos utilizar ela recebe dois parametros(porta,função retorna apenas a msg)
-server.listen(5000,()=>console.log('online'))
+server.listen(5000,()=>console.log('Server on '))
 
