@@ -32,8 +32,5 @@ export class UserService {
     return db
     }
 
-    DeletarNome =() =>{
-      db.slice(1)
-      return db
-    }
+   
 }

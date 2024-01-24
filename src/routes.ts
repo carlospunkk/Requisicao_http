@@ -5,13 +5,15 @@ import { UserController } from "./controllers/UserController";
 export const router = Router();
 
 
-const usercontroller = new UserController
+const usercontroller = new UserController()
 
 // método de post 
 router.post('/user',usercontroller.createUser) 
 
 // pegando com get 
 router.get('/user',usercontroller.getAllUsers)
+
+
 
 
 // deletar usuario simulação

@@ -36,10 +36,6 @@ export class UserController {
       return res.status(200).json(users)
 
     }
-    // parei aqui 
-    DeletarNome = (req:Request,res:Response){
-      const user = 
-    }
   
 
 }
